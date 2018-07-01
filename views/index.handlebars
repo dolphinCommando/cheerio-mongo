@@ -1,0 +1,14 @@
+<header>
+  <h1>@TheRealNewYorkTimes</h1>
+</header>
+<section>
+  {{#each article}}
+  <article>
+    <h3>{{title}}</h3>
+    <small>{{byline}}</small>
+    <p>{{summary}}</p>
+    <a href="{{link}}" target="_blank">Link</a>
+  </article>
+  {{/each}}
+</section>
+

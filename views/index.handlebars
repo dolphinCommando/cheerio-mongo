@@ -1,14 +1,24 @@
+<div class="container">
+
 <header>
-  <h1>@TheRealNewYorkTimes</h1>
+  <div class="jumbotron">
+    <h1 class="display-4">@realNewYorkTimes</h1>
+  </div>
 </header>
-<section>
+<section class="row">
   {{#each article}}
-  <article>
-    <h3>{{title}}</h3>
-    <small>{{byline}}</small>
-    <p>{{summary}}</p>
-    <a href="{{link}}" target="_blank">Link</a>
+  <div class="card col-12">
+  <article class="card-body">
+    <h5 class="card-title">{{title}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{byline}}</h6>
+    <p class="card-text">{{summary}}</p>
+    <a href="{{link}}" class="card-link" target="_blank">Read</a>
+    <hr class="my-4">
+    <button type="button" class="btn btn-primary notes" data-toggle="modal" data-target="#modalNotes">Notes</button> 
   </article>
+  </div>
   {{/each}}
 </section>
+{{> modal}}
+</div>
 

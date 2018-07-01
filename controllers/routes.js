@@ -1,8 +1,6 @@
 var cheerio = require('cheerio');
 var request = require('request');
-var db = {};
-db.Article = require('../models/Article.js');
-db.Note = require('../models/Note.js');
+var db = require('../models');
 
 const startApp = function(app) {
   app.get('/', function(req, res) {
@@ -27,7 +25,7 @@ function scrape() {
       if (error) {
         reject('Could not request site');
       }
-      console.log('statusCode:', response && response.statusCode); 
+      console.log('request statusCode:', response && response.statusCode); 
       const $ = cheerio.load(html);
       $('.theme-summary').each((i, elem) => {
         if ($(elem).children('.story-heading').text()) {

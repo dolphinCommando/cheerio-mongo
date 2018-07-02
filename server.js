@@ -4,12 +4,11 @@ var mongoose = require('mongoose');
 var exphbs = require('express-handlebars');
 var startApp = require('./controllers/routes.js');
 
+var app = express();
+app.use(express.static('public'));
 var PORT = 8080;
 
-var app = express();
-
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static('public'));
 mongoose.connect("mongodb://localhost/cheerioNews");
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));

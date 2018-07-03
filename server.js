@@ -9,8 +9,21 @@ app.use(express.static('public'));
 var PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
-mongoose.connect("mongodb://localhost/cheerioNews");
 
+var databaseUri = "mongodb://localhost/cheerioNews";
+if (process.env.MONGODB_URI) {
+  mongoose.connect(process.env.MONGODB_URI);
+}
+else {
+  mongoose.connect(databaseUri);
+}
+var db = mongoose.connection;
+db.on('error', function(err) {
+  console.log('Mongoose error ' + err);
+});
+db.once('open', function() {
+  console.log('Mongoose connection successful');
+})
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 

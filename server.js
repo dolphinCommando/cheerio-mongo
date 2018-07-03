@@ -6,7 +6,7 @@ var startApp = require('./controllers/routes.js');
 
 var app = express();
 app.use(express.static('public'));
-var PORT = 8080;
+var PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 mongoose.connect("mongodb://localhost/cheerioNews");
